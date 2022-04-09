@@ -1,0 +1,42 @@
+[binaries]
+c = 'arm-none-eabi-gcc'
+cpp = 'arm-none-eabi-g++'
+ld = 'arm-none-eabi-ld'
+ar = 'arm-none-eabi-ar'
+as = 'arm-none-eabi-as'
+strip = 'arm-none-eabi-strip'
+
+[built-in options]
+c_args = [
+    '-mcpu=cortex-m4',
+    '-mthumb',
+    '-mfpu=fpv4-sp-d16',
+    '-mfloat-abi=hard',
+    '-Wall',
+    '-ffunction-sections',
+    '-fdata-sections',
+    '-DGD32F405',
+    '-DUSE_STDPERIPH_DRIVER',
+    '-DUSE_USBHS',
+    '-DUSE_ULPI_PHY',
+    '-D__packed=__attribute__ ((__packed__))',
+    ]
+
+c_link_args = [
+    '-mcpu=cortex-m4',
+    '-mthumb',
+    '-mfpu=fpv4-sp-d16',
+    '-mfloat-abi=hard',
+    '-specs=nano.specs',
+    '-lc',
+    '-lm',
+    '-lnosys',
+    '-Wl,--gc-sections',
+    '-Wl,-Map=map.map,--cref',
+    ]
+
+[host_machine]
+system = 'bare-metal'
+cpu_family = 'arm'
+cpu = 'cortex-m4'
+endian = 'little'
