@@ -19,6 +19,7 @@ c_args = [
     '-DUSE_STDPERIPH_DRIVER',
     '-DUSE_USBHS',
     '-DUSE_ULPI_PHY',
+    '-g',
     '-D__packed=__attribute__ ((__packed__))',
     ]
 
@@ -31,6 +32,7 @@ c_link_args = [
     '-lc',
     '-lm',
     '-lnosys',
+    '-g',
     '-Wl,--gc-sections',
     '-Wl,-Map=map.map,--cref',
     ]
