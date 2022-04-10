@@ -9,6 +9,7 @@
   meson_version : '>=0.51.0')
 
 src = [
+  './src/startup_stm32f405xx.s',
   './src/app.c',
   './src/cdc_acm_core.c',
   './src/gd32f4xx_it.c',
@@ -40,6 +41,9 @@ inc = [
 ]
 
 link_args = []
+
+linkerfile = 'link.ld'
+link_args += '-Wl,-T@0@/@1@'.format(meson.current_source_dir(), linkerfile)
 
 exe = executable('gd32f4_usb_cdc_acm',
   [src],
